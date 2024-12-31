@@ -1,0 +1,17 @@
+# Specify a base image
+FROM docker.io/node:18-alpine
+
+# Switch Workdir to /usr/app
+WORKDIR /usr/app
+
+COPY ./package.json ./
+
+# Install the dependencies
+RUN npm install
+# Copy our current directory into
+# the container
+COPY ./ ./
+
+
+# Default Command
+CMD ["npm", "start"]
